@@ -32,10 +32,7 @@
     MPPlayerManager *manager = [MPPlayerManager sharedInstanceView:self.view];
     //        NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"123" ofType:@"mp4"];
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"456" ofType:@"flv"];
-    
-//        manager.mediaURL = [NSURL fileURLWithPath:@"/Users/zyyt/iOS/MobliePlayer/MobliePlayer/02.mov"];
-    //    manager.mediaURL = [NSURL fileURLWithPath:@"/Users/zyyt/iOS/MobliePlayer/MobliePlayer/123.mp4"];
-            manager.mediaURL = [NSURL fileURLWithPath:imagePath];
+    manager.mediaURL = [NSURL fileURLWithPath:imagePath];
 //        manager.mediaURL = [NSURL  URLWithString:@"rtmp://live.hkstv.hk.lxdns.com/live/hks"];
 //    manager.mediaURL = [NSURL  URLWithString:@"http://gslb.miaopai.com/stream/mHtThGn2H1rQ54LY~uk5hw__.mp4?yx=&refer=weibo_app&Expires=1491533552&ssig=c%2FjqaqlRfd&KID=unistore,video"];
     

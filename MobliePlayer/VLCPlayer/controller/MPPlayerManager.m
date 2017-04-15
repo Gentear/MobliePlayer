@@ -16,22 +16,22 @@
 #import "UINavigationController+ZFPlayerRotation.h"
 #import "MPPlayer.h"
 #import "MPBirghtness.h"
-
+#import "MPPanGestureRecognizer.h"
 //忽略编译器的警告
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored"-Wdeprecated-declarations"
 
-// 枚举值，包含水平移动方向和垂直移动方向
-typedef NS_ENUM(NSInteger, PanDirection){
-    PanDirectionHorizontalMoved, // 横向移动
-    PanDirectionVerticalMoved    // 纵向移动
-};
-@interface MPPlayerManager ()<VLCMediaPlayerDelegate,UIGestureRecognizerDelegate>
+//// 枚举值，包含水平移动方向和垂直移动方向
+//typedef NS_ENUM(NSInteger, PanDirection){
+//    PanDirectionHorizontalMoved, // 横向移动
+//    PanDirectionVerticalMoved    // 纵向移动
+//};
+@interface MPPlayerManager ()<VLCMediaPlayerDelegate,UIGestureRecognizerDelegate,MPPanGestureRecognizerDelegates>
 
 /** 手势方向 */
-@property (nonatomic, assign) PanDirection panDirection;
+//@property (nonatomic, assign) PanDirection panDirection;
 /** 手势 */
-@property (nonatomic, strong)UIPanGestureRecognizer *panRecognizer;
+@property (nonatomic, strong)MPPanGestureRecognizer *panRecognizer;
 /**播放器*/
 @property (nonatomic,strong) VLCMediaPlayer *player;
 /** HUD */
@@ -97,10 +97,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
     [CLNotificationCenter addObserver:self selector:@selector(audioRouteChangeListenerCallback:) name:AVAudioSessionRouteChangeNotification object:nil];
     //屏幕旋转
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
-    [CLNotificationCenter addObserver:self
-                                             selector:@selector(onDeviceOrientationChange)
-                                                 name:UIDeviceOrientationDidChangeNotification
-                                               object:nil
+    [CLNotificationCenter addObserver:self selector:@selector(onDeviceOrientationChange) name:UIDeviceOrientationDidChangeNotification object:nil
      ];
 }
 - (void)addTarget{
@@ -205,72 +202,6 @@ typedef NS_ENUM(NSInteger, PanDirection){
     return CGAffineTransformIdentity;
 }
 #pragma mark - UIPanGestureRecognizer手势方法
-
-/**
- *  pan手势事件
- *
- *  @param pan UIPanGestureRecognizer
- */
-- (void)panDirection:(UIPanGestureRecognizer *)pan {
-    CGPoint locationPoint = [pan locationInView:self];
-    CGPoint veloctyPoint = [pan velocityInView:self];
-    switch (pan.state) {
-        case UIGestureRecognizerStateBegan:{
-            // 使用绝对值来判断移动的方向
-            CGFloat x = fabs(veloctyPoint.x);
-            CGFloat y = fabs(veloctyPoint.y);
-            if (x > y) { // 横向移动
-                self.panDirection = PanDirectionHorizontalMoved;
-                self.sumTime = self.player.time.intValue;
-            }else if (x < y){  // 纵向移动
-                self.panDirection = PanDirectionVerticalMoved;
-                if (locationPoint.x > self.bounds.size.width / 2) {
-                    self.birghtness.isVolume = YES;
-                }else { // 状态改为显示亮度调节
-                    self.birghtness.isVolume = NO;
-                }
-            }
-            break;
-        }
-        case UIGestureRecognizerStateChanged:{
-            switch (self.panDirection) {
-                case PanDirectionHorizontalMoved:{
-                    [self horizontalMoved:veloctyPoint.x];
-                    break;
-                }
-                case PanDirectionVerticalMoved:{
-                    [self verticalMoved:veloctyPoint.y];                     break;
-                }
-                default:
-                    break;
-            }
-            break;
-        }
-        case UIGestureRecognizerStateEnded:{ // 移动停止
-            // 移动结束也需要判断垂直或者平移
-            // 比如水平移动结束时，要快进到指定位置，如果这里没有判断，当我们调节音量完之后，会出现屏幕跳动的bug
-            switch (self.panDirection) {
-                case PanDirectionHorizontalMoved:{
-                    CGFloat play = self.sumTime/self.player.media.length.value.floatValue;
-                    [self playWithTime:play];
-                    [self MediaPlay];
-                    self.sumTime = 0;
-                    break;
-                }
-                case PanDirectionVerticalMoved:{
-                    // 垂直移动结束后，把状态改为不再控制音量
-                    self.birghtness.isVolume = NO;
-                    break;
-                }
-                default:
-                    break;
-            }
-            break;
-        }
-        default:
-            break;
-    }
-}
 /**
 *  pan水平移动的方法
 */
@@ -287,10 +218,6 @@ typedef NS_ENUM(NSInteger, PanDirection){
 }
 /**
  *  根据时长求出字符串
- *
- *  @param time 时长
- *
- *  @return 时长字符串
  */
 - (NSString *)durationStringWithTime:(int)time {
    VLCTime *timer = [VLCTime timeWithInt:time];
@@ -461,6 +388,42 @@ typedef NS_ENUM(NSInteger, PanDirection){
     }
     return  YES;
 }
+#pragma mark - MPPanGestureRecognizerDelegates
+//横向移动
+- (void)panHorizontalMoved:(PanMoved)moved position:(CGFloat)position{
+    switch (moved) {
+        case PanBeganMoved:
+            self.sumTime = self.player.time.intValue;
+            break;
+        case PanChangeMoved:
+            [self horizontalMoved:position];
+            break;
+        case PanEndMoved:{
+            CGFloat play = self.sumTime/self.player.media.length.value.floatValue;
+            [self playWithTime:play];
+            [self MediaPlay];
+            self.sumTime = 0;
+    }break;
+        default:
+            break;
+    }
+}
+//纵向移动
+-(void)panVerticalMovedVolum:(PanMoved)moved position:(CGFloat)position isVolume:(BOOL)isVolume{
+    switch (moved) {
+        case PanBeganMoved:
+            self.birghtness.isVolume = isVolume;
+            break;
+        case PanChangeMoved:
+            [self verticalMoved:position];
+            break;
+        case PanEndMoved:
+            self.birghtness.isVolume = NO;
+            break;
+        default:
+            break;
+    }
+}
 #pragma mark - dealloc
 - (void)dealloc {
     [CLNotificationCenter removeObserver:self];
@@ -515,14 +478,11 @@ typedef NS_ENUM(NSInteger, PanDirection){
     }
     return _controlView;
 }
-- (UIPanGestureRecognizer *)panRecognizer{
+- (MPPanGestureRecognizer *)panRecognizer{
     if (!_panRecognizer) {
-        UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panDirection:)];
+        MPPanGestureRecognizer *panRecognizer = [MPPanGestureRecognizer panGestureRecognizer];
         panRecognizer.delegate = self;
-        [panRecognizer setMaximumNumberOfTouches:1];
-        [panRecognizer setDelaysTouchesBegan:YES];
-        [panRecognizer setDelaysTouchesEnded:YES];
-        [panRecognizer setCancelsTouchesInView:YES];
+        panRecognizer.delegates = self;
         [self addGestureRecognizer:panRecognizer];
         _panRecognizer = panRecognizer;
     }

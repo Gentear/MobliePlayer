@@ -20,7 +20,6 @@
 		F3067D6B1E94CF540017CA13 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F3067D6A1E94CF540017CA13 /* libiconv.tbd */; };
 		F3067D6D1E94CF5D0017CA13 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F3067D6C1E94CF5D0017CA13 /* libstdc++.6.0.9.tbd */; };
 		F3067D761E94D4540017CA13 /* MPPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F3067D751E94D4540017CA13 /* MPPlayerManager.m */; };
-		F3067D781E94D4D30017CA13 /* 02.mov in Resources */ = {isa = PBXBuildFile; fileRef = F3067D771E94D4D30017CA13 /* 02.mov */; };
 		F3067DAD1E94E3E80017CA13 /* MPControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3067DAC1E94E3E80017CA13 /* MPControlView.m */; };
 		F3067DB01E94E42D0017CA13 /* MPHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3067DAF1E94E42D0017CA13 /* MPHUDView.m */; };
 		F341B04E1EA1E2EC005F9510 /* loading_bgView.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F341B04D1EA1E2EC005F9510 /* loading_bgView.jpg */; };
@@ -31,7 +30,6 @@
 		F36CD3A21E9743AE00D1F2FE /* UIViewController+ZFPlayerRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F36CD39E1E9743AE00D1F2FE /* UIViewController+ZFPlayerRotation.m */; };
 		F38B1EA31E9F4C1000458971 /* volume@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F38B1EA21E9F4C1000458971 /* volume@2x.png */; };
 		F38B1EA51E9F648F00458971 /* mute@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F38B1EA41E9F648F00458971 /* mute@2x.png */; };
-		F39575A11E971F820046596C /* 123.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F3FB97DF1E95281100C51629 /* 123.mp4 */; };
 		F39575A21E971F820046596C /* 456.flv in Resources */ = {isa = PBXBuildFile; fileRef = F3FB97E01E9528E700C51629 /* 456.flv */; };
 		F395761E1E97329E0046596C /* back_full.png in Resources */ = {isa = PBXBuildFile; fileRef = F39575F61E97329E0046596C /* back_full.png */; };
 		F395761F1E97329E0046596C /* back_full@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F39575F71E97329E0046596C /* back_full@2x.png */; };
@@ -104,7 +102,6 @@
 		F3067D6C1E94CF5D0017CA13 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		F3067D741E94D4540017CA13 /* MPPlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPPlayerManager.h; sourceTree = "<group>"; };
 		F3067D751E94D4540017CA13 /* MPPlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPPlayerManager.m; sourceTree = "<group>"; };
-		F3067D771E94D4D30017CA13 /* 02.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 02.mov; sourceTree = "<group>"; };
 		F3067DAB1E94E3E80017CA13 /* MPControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPControlView.h; sourceTree = "<group>"; };
 		F3067DAC1E94E3E80017CA13 /* MPControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPControlView.m; sourceTree = "<group>"; };
 		F3067DAE1E94E42D0017CA13 /* MPHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPHUDView.h; sourceTree = "<group>"; };
@@ -174,7 +171,6 @@
 		F3AC1A911EA05E7500623751 /* fast_backward@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fast_backward@2x.png"; sourceTree = "<group>"; };
 		F3AC1A921EA05E7500623751 /* fast_backward@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fast_backward@3x.png"; sourceTree = "<group>"; };
 		F3AC1A931EA05E7500623751 /* fast_forward@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fast_forward@3x.png"; sourceTree = "<group>"; };
-		F3FB97DF1E95281100C51629 /* 123.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 123.mp4; sourceTree = "<group>"; };
 		F3FB97E01E9528E700C51629 /* 456.flv */ = {isa = PBXFileReference; lastKnownFileType = file; path = 456.flv; sourceTree = "<group>"; };
 		F3FF31AD1E9B65F700E298FB /* MPBirghtness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPBirghtness.h; sourceTree = "<group>"; };
 		F3FF31AE1E9B65F700E298FB /* MPBirghtness.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPBirghtness.m; sourceTree = "<group>"; };
@@ -239,8 +235,6 @@
 		F3067D4C1E94CB390017CA13 /* MobliePlayer */ = {
 			isa = PBXGroup;
 			children = (
-				F3067D771E94D4D30017CA13 /* 02.mov */,
-				F3FB97DF1E95281100C51629 /* 123.mp4 */,
 				F3FB97E01E9528E700C51629 /* 456.flv */,
 				F3067D701E94D4250017CA13 /* VLCPlayer */,
 				F3067D501E94CB390017CA13 /* AppDelegate.h */,
@@ -448,7 +442,6 @@
 			files = (
 				F3AC1A951EA05E7500623751 /* fast_backward@2x.png in Resources */,
 				F39576251E97329E0046596C /* close@3x.png in Resources */,
-				F39575A11E971F820046596C /* 123.mp4 in Resources */,
 				F38B1EA31E9F4C1000458971 /* volume@2x.png in Resources */,
 				F395762C1E97329E0046596C /* lock-nor.png in Resources */,
 				F39576241E97329E0046596C /* close@2x.png in Resources */,
@@ -476,7 +469,6 @@
 				F395762D1E97329E0046596C /* lock-nor@2x.png in Resources */,
 				F39576391E97329E0046596C /* repeat_video.png in Resources */,
 				F39576281E97329E0046596C /* fullscreen.png in Resources */,
-				F3067D781E94D4D30017CA13 /* 02.mov in Resources */,
 				F39576361E97329E0046596C /* play.png in Resources */,
 				F39576381E97329E0046596C /* play@3x.png in Resources */,
 				F395761E1E97329E0046596C /* back_full.png in Resources */,
@@ -691,6 +683,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = MobliePlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.conglei.MobliePlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -706,6 +699,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = MobliePlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.conglei.MobliePlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
