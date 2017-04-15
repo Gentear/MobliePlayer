@@ -1,0 +1,15 @@
+PODS:
+  - Masonry (1.0.2)
+  - MobileVLCKit (2.2.2)
+
+DEPENDENCIES:
+  - Masonry
+  - MobileVLCKit
+
+SPEC CHECKSUMS:
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  MobileVLCKit: 75c2c36b0e3478c3f18cac3a2e7fa127cda0ff92
+
+PODFILE CHECKSUM: 662d3c52e6eb2d29c5dfb6a98af0210e748bdcc0
+
+COCOAPODS: 1.1.1
