@@ -1,15 +1,29 @@
 PODS:
+  - CocoaAsyncSocket (7.6.0)
+  - CocoaHTTPServer (2.3):
+    - CocoaAsyncSocket
+    - CocoaLumberjack
+  - CocoaLumberjack (3.1.0):
+    - CocoaLumberjack/Default (= 3.1.0)
+    - CocoaLumberjack/Extensions (= 3.1.0)
+  - CocoaLumberjack/Default (3.1.0)
+  - CocoaLumberjack/Extensions (3.1.0):
+    - CocoaLumberjack/Default
   - Masonry (1.0.2)
   - MobileVLCKit (2.2.2)
 
 DEPENDENCIES:
+  - CocoaHTTPServer
   - Masonry
   - MobileVLCKit
 
 SPEC CHECKSUMS:
+  CocoaAsyncSocket: b9d5589f07baf9de8f34cc25abd4fcba28f13805
+  CocoaHTTPServer: 5624681fc3473d43b18202f635f9b3abb013b530
+  CocoaLumberjack: 8311463ddf9ee86a06ef92a071dd656c89244500
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MobileVLCKit: 75c2c36b0e3478c3f18cac3a2e7fa127cda0ff92
 
-PODFILE CHECKSUM: 662d3c52e6eb2d29c5dfb6a98af0210e748bdcc0
+PODFILE CHECKSUM: 8ab9c8585ccac954a4f666a5f2e6fe6253e00638
 
 COCOAPODS: 1.1.1

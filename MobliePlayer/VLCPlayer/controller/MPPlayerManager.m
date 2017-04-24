@@ -21,15 +21,7 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored"-Wdeprecated-declarations"
 
-//// 枚举值，包含水平移动方向和垂直移动方向
-//typedef NS_ENUM(NSInteger, PanDirection){
-//    PanDirectionHorizontalMoved, // 横向移动
-//    PanDirectionVerticalMoved    // 纵向移动
-//};
-@interface MPPlayerManager ()<VLCMediaPlayerDelegate,UIGestureRecognizerDelegate,MPPanGestureRecognizerDelegates>
-
-/** 手势方向 */
-//@property (nonatomic, assign) PanDirection panDirection;
+@interface MPPlayerManager ()<VLCMediaPlayerDelegate,UIGestureRecognizerDelegate,MPPanGestureRecognizerDelegates,MPControlViewDelegate>
 /** 手势 */
 @property (nonatomic, strong)MPPanGestureRecognizer *panRecognizer;
 /**播放器*/
@@ -66,8 +58,8 @@
     }];
 }
 - (void)willMoveToSuperview:(UIView *)newSuperview{
-    self.backgroundColor = [UIColor redColor];
-    [self addTarget];
+    self.backgroundColor = [UIColor blackColor];
+    [self.controlView showAnimation];
     [self addNotification];
     self.alpha = 0.0;
     [UIView animateWithDuration:AnimationTime delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:5//初始速度，数值越大初始速度越快
@@ -99,15 +91,6 @@
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     [CLNotificationCenter addObserver:self selector:@selector(onDeviceOrientationChange) name:UIDeviceOrientationDidChangeNotification object:nil
      ];
-}
-- (void)addTarget{
-    [self.controlView showAnimation];
-    [self.controlView.playBtn addTarget:self action:@selector(playBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [self.controlView.fullScreenBtn addTarget:self action:@selector(fullScreenBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [self.controlView.closeBtn addTarget:self action:@selector(closeBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [self.controlView.playProgress addTarget:self action:@selector(progressSlider:) forControlEvents:UIControlEventValueChanged];
-    [self.controlView.playProgress addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(fontSliderTapped:)]];
-    [self.controlView.doubleStop addTarget:self action:@selector(DoubleTap:)];
 }
 #pragma mark - 通知
 //屏幕旋转的通知
@@ -143,9 +126,7 @@
     }
 }
 #pragma mark - 屏幕旋转
-/*
- * 旋转
- */
+/* 旋转 */
 - (void)TransformView:(UIInterfaceOrientation)orientation{
     // 获取到当前状态条的方向
     UIInterfaceOrientation currentOrientation = [UIApplication sharedApplication].statusBarOrientation;
@@ -183,11 +164,7 @@
     // 开始旋转
     [UIView commitAnimations];
 }
-/**
- * 获取变换的旋转角度
- *
- * @return 角度
- */
+/** 获取变换的旋转角度 */
 - (CGAffineTransform)getTransformRotationAngle {
     // 状态条的方向已经设置过,所以这个就是你想要旋转的方向
     UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
@@ -202,12 +179,9 @@
     return CGAffineTransformIdentity;
 }
 #pragma mark - UIPanGestureRecognizer手势方法
-/**
-*  pan水平移动的方法
-*/
+/** pan水平移动的方法 */
 - (void)horizontalMoved:(CGFloat)value {
     self.sumTime = self.sumTime + value;
-    NSLog(@"self.sumTime %f",self.sumTime);
 //    移动的时常
     CGFloat play = self.sumTime/self.player.media.length.value.floatValue;
     if (play > 1) { play = 1;}
@@ -216,22 +190,16 @@
     [self.controlView MPPlayerManagerProgress:play time:[self durationStringWithTime:play * self.player.media.length.value.floatValue] value:value];
     self.controlView.playTimeLabel.text = [self durationStringWithTime:self.sumTime];
 }
-/**
- *  根据时长求出字符串
- */
+/** 根据时长求出字符串 */
 - (NSString *)durationStringWithTime:(int)time {
    VLCTime *timer = [VLCTime timeWithInt:time];
     return timer.stringValue;
 }
-/**
- *  pan垂直移动的方法
- */
+/** pan垂直移动的方法 */
 - (void)verticalMoved:(CGFloat)value {
     self.birghtness  .isVolume ? (self.volumeViewSlider.value -= value / 10000) : ([UIScreen mainScreen].brightness -= value / 10000);
 }
-/**
- *  获取系统音量
- */
+/** 获取系统音量 */
 - (void)configureVolume {
     [[AVAudioSession sharedInstance]setActive:YES error:nil];
     MPVolumeView *volumeView = [[MPVolumeView alloc] initWithFrame:CGRectMake(-1000, -1000, 100, 100)];
@@ -257,21 +225,7 @@
     
 }
 #pragma mark - 滑竿改变进度
-- (void)progressSlider:(UISlider *)slider{
-    [self changePlayTime:slider.value];
-    [self playWithTime:slider.value];
-}
-- (void)fontSliderTapped:(UITapGestureRecognizer *)tapGesture {
-    NSLog(@"%@",NSStringFromClass([tapGesture.view class]));
-    if ([NSStringFromClass([tapGesture.view class]) isEqualToString:@"UIImageView"]) {
-        return ;
-    }
-    CGPoint touchPoint = [tapGesture locationInView:self.controlView.playProgress];
-    CGFloat value = (self.controlView.playProgress.maximumValue - self.controlView.playProgress.minimumValue) * (touchPoint.x / self.controlView.playProgress.frame.size.width );
-    [self.controlView.playProgress setValue:value animated:YES];
-    [self changePlayTime:value];
-    [self playWithTime:value];
-}
+
 - (void)changePlayTime:(CGFloat)value{
     if (value > 1) { value = 1;}
     if (value < 0) { value = 0;}
@@ -285,23 +239,35 @@
     VLCTime *targetTime = [[VLCTime alloc] initWithInt:targetIntvalue];
     [self.player setTime:targetTime];
 }
-#pragma mark - btn
-/**
- *  处理双击操作
- */
--(void)DoubleTap:(UITapGestureRecognizer*)recognizer{
-   self.controlView.playBtn.selected? [self MediaPlay]:[self MediaPause];
+#pragma mark - play/pause/stop
+/** 播放 */
+- (void)MediaPlay{
+    [self.player play];
+    self.controlView.playTimeLabel.text = self.player.time.stringValue;
+    self.controlView.videoTimeLabel.text = self.player.media.length.stringValue;
+    self.controlView.playBtn.selected = NO;
+    [self panRecognizer];
 }
-/**
- *  关闭视频
- */
-- (void)closeBtn:(UIButton *)close{
-    [self MediaStop];
+/** 暂停 */
+- (void)MediaPause{
+    [self.player pause];
+    self.controlView.playBtn.selected = YES;
 }
-/**
- *  全屏
- */
-- (void)fullScreenBtn:(UIButton *)fullScreen{
+/** 停止 */
+- (void)MediaStop{
+    [self.player stop];
+    self.controlView.playBtn.selected = YES;
+    self.controlView.playProgress.value = 0;
+    self.controlView.bottomProgress.value = 0;
+    self.controlView.playTimeLabel.text = @"00:00";
+}
+#pragma mark - MPControlViewDelegate
+/** 播放按钮 */
+- (void)DelegatePlayBtn:(UIButton *)play{
+    play.selected? [self MediaPlay]:[self MediaPause];
+}
+/** 全屏 */
+- (void)DelegateFullScreenBtn:(UIButton *)fullScreen{
     fullScreen.selected = !fullScreen.selected;
     
     
@@ -316,39 +282,31 @@
         [self TransformView:UIInterfaceOrientationPortrait];
     }
 }
-/**
- *  播放按钮
- */
-- (void)playBtn:(UIButton *)play{
-    play.selected? [self MediaPlay]:[self MediaPause];
+/** 关闭视频 */
+- (void)DelegateCloseBtn:(UIButton *)close{
+     [self MediaStop];
 }
-#pragma mark - play/pause/stop
-/**
- *  播放
- */
-- (void)MediaPlay{
-    [self.player play];
-    self.controlView.playTimeLabel.text = self.player.time.stringValue;
-    self.controlView.videoTimeLabel.text = self.player.media.length.stringValue;
-    self.controlView.playBtn.selected = NO;
-    [self panRecognizer];
+- (void)DelegateProgressSlider:(UISlider *)slider{
+    self.controlView.isHiddenControl = NO;
+    [self changePlayTime:slider.value];
+    [self playWithTime:slider.value];
 }
-/**
- *  暂停
- */
-- (void)MediaPause{
-    [self.player pause];
-    self.controlView.playBtn.selected = YES;
+- (void)DelegateProgressSliderFinish{
+    self.controlView.isHiddenControl = YES;
 }
-/**
- *  停止
- */
-- (void)MediaStop{
-    [self.player stop];
-    self.controlView.playBtn.selected = YES;
-    self.controlView.playProgress.value = 0;
-    self.controlView.bottomProgress.value = 0;
-    self.controlView.playTimeLabel.text = @"00:00";
+- (void)DelegateFontSliderTapped:(UITapGestureRecognizer *)tapGesture{
+    if ([NSStringFromClass([tapGesture.view class]) isEqualToString:@"UIImageView"]) {
+        return ;
+    }
+    CGPoint touchPoint = [tapGesture locationInView:self.controlView.playProgress];
+    CGFloat value = (self.controlView.playProgress.maximumValue - self.controlView.playProgress.minimumValue) * (touchPoint.x / self.controlView.playProgress.frame.size.width );
+    [self.controlView.playProgress setValue:value animated:YES];
+    [self changePlayTime:value];
+    [self playWithTime:value];
+}
+/** 处理双击操作 */
+-(void)DelegateDoubleTap:(UITapGestureRecognizer*)recognizer{
+    self.controlView.playBtn.selected? [self MediaPlay]:[self MediaPause];
 }
 #pragma mark - VLCMediaPlayerDelegate
 - (void)mediaPlayerStateChanged:(NSNotification *)aNotification{
@@ -393,6 +351,7 @@
 - (void)panHorizontalMoved:(PanMoved)moved position:(CGFloat)position{
     switch (moved) {
         case PanBeganMoved:
+            NSLog(@"66666666666666666666::::::%@",self.player.time.stringValue);
             self.sumTime = self.player.time.intValue;
             break;
         case PanChangeMoved:
@@ -470,6 +429,7 @@
     if (!_controlView) {
         _controlView = [[MPControlView alloc]init];
         [self addSubview:_controlView];
+        self.controlView.delegate  = self;
         [self.controlView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.equalTo(self);
             make.height.equalTo(self);

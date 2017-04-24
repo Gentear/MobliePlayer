@@ -23,6 +23,8 @@
 
 /** 快进快退View*/
 @property (nonatomic, strong) MPFastView *fastView;
+
+
 @end
 
 @implementation MPControlView
@@ -58,8 +60,12 @@
     [self closeBtn];
     [self tapShowView];
     [self showFrame];
+    [self addTarget];
 }
 - (void)hideAnimation{
+    if (!_isHiddenControl) {
+        return;
+    }
     [UIView animateWithDuration:AnimationTime animations:^{
         [self hiddenFrame];
         [self layoutIfNeeded];
@@ -77,6 +83,7 @@
     }];
 }
 - (void)showAnimation{
+    _isHiddenControl = YES;
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     self.bottomImage.hidden = NO;
     self.topImage.hidden = NO;
@@ -114,6 +121,64 @@
     }
     return  YES;
 }
+#pragma mark - btn
+- (void)addTarget{
+    [self showAnimation];
+    [self.playBtn addTarget:self action:@selector(playBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.fullScreenBtn addTarget:self action:@selector(fullScreenBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.closeBtn addTarget:self action:@selector(closeBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.playProgress addTarget:self action:@selector(progressSlider:) forControlEvents:UIControlEventValueChanged];
+    [self.playProgress addTarget:self action:@selector(progressSliderFinish) forControlEvents:UIControlEventTouchUpInside];
+    [self.playProgress addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(fontSliderTapped:)]];
+    [self.doubleStop addTarget:self action:@selector(DoubleTap:)];
+}
+/** 播放按钮 */
+- (void)playBtn:(UIButton *)play{
+    if ([self.delegate respondsToSelector:@selector(DelegatePlayBtn:)]) {
+        [self.delegate DelegatePlayBtn:play];
+    }
+}
+/** 全屏 */
+- (void)fullScreenBtn:(UIButton *)fullScreen{
+    if ([self.delegate respondsToSelector:@selector(DelegateFullScreenBtn:)]) {
+        [self.delegate DelegateFullScreenBtn:fullScreen];
+    }
+}
+/** 关闭视频 */
+- (void)closeBtn:(UIButton *)close{
+    if ([self.delegate respondsToSelector:@selector(DelegateCloseBtn:)]) {
+        [self.delegate DelegateCloseBtn:close];
+    }
+}
+- (void)progressSlider:(UISlider *)slider{
+    if ([self.delegate respondsToSelector:@selector(DelegateProgressSlider:)]) {
+        [self.delegate DelegateProgressSlider:slider];
+    }
+}
+- (void)progressSliderFinish{
+    if ([self.delegate respondsToSelector:@selector(DelegateProgressSliderFinish)]) {
+        [self.delegate DelegateProgressSliderFinish];
+    }
+}
+- (void)fontSliderTapped:(UITapGestureRecognizer *)tapGesture {
+    if ([self.delegate respondsToSelector:@selector(DelegateFontSliderTapped:)]) {
+        [self.delegate DelegateFontSliderTapped:tapGesture];
+    }
+}
+/** 处理双击操作 */
+-(void)DoubleTap:(UITapGestureRecognizer*)recognizer{
+    if ([self.delegate respondsToSelector:@selector(DelegateDoubleTap:)]) {
+        [self.delegate DelegateDoubleTap:recognizer];
+    }
+}
+#pragma mark - set方法
+- (void)setIsHiddenControl:(BOOL)isHiddenControl{
+    _isHiddenControl = isHiddenControl;
+    if (_isHiddenControl) {
+        [self showAnimation];
+    }
+}
+
 #pragma mark - getter
 - (MPFastView *)fastView {
     if (!_fastView) {

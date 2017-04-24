@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\">
+    </head>
+    <body>
+<!--        <form action="upload.html" method="post" enctype="multipart/form-data" accept-charset="utf-8">-->
+<!--            <input type="file" name="upload1"><br/>-->
+<!--            <input type="file" name="upload2"><br/>-->
+<!---->
+<!--            <input id="file" type="file" name="upload[]" multiple>-->
+<!--    -->
+<!--            <input type="submit" value="Submit">-->
+<!--        </form>-->
+<!--        -->
+<form id="J_myUploadForm" action="" method="post" enctype="multipart/form-data">
+    <input type="file" name="fileField[]" id="fileField" multiple/>
+</form>
+<input type="button" value="ajaxFileUpload" id="btn"/>
+<script src="ajaxfileupload.js"></script>
+<script>
+    var btn = document.getElementById('btn');
+    btn.onclick = function(){
+        ajaxFileUpload({
+            id:'fileField',
+            callback:function(){
+                    var src = this.responseText;
+                    var img = document.createElement('file');
+                    img.src = src;
+                    document.body.appendChild(img);
+            }
+        });
+    }
+</script>
+<div id="assb"> %ceshi% </div>
+<div id="filess">%filess%</div>
+<div id='dd'> </div>
+
+<!--http://www.oschina.net/code/snippet_569983_11316#18460-->
+
+
+
+
+
+
+    </body>
+</html>

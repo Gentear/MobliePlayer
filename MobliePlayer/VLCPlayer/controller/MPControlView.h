@@ -10,8 +10,17 @@
 #import "MPSlider.h"
 
 @protocol MPControlViewDelegate <NSObject>
-
-
+/** 播放按钮 */
+- (void)DelegatePlayBtn:(UIButton *)play;
+/** 全屏 */
+- (void)DelegateFullScreenBtn:(UIButton *)fullScreen;
+/** 关闭视频 */
+- (void)DelegateCloseBtn:(UIButton *)close;
+- (void)DelegateProgressSlider:(UISlider *)slider;
+- (void)DelegateProgressSliderFinish;
+- (void)DelegateFontSliderTapped:(UITapGestureRecognizer *)tapGesture;
+/** 处理双击操作 */
+-(void)DelegateDoubleTap:(UITapGestureRecognizer*)recognizer;
 @end
 
 
@@ -40,7 +49,9 @@
 @property (strong,nonatomic) UIImageView *bottomImage;
 /** 加载失败按钮 */
 @property (strong,nonatomic) UIButton *failBtn;
-
+/** 是否隐藏 */
+@property (assign,nonatomic) BOOL isHiddenControl;
+@property (weak, nonatomic) id<MPControlViewDelegate>delegate;
 
 + (id)controlView;
 - (void)showAnimation;
