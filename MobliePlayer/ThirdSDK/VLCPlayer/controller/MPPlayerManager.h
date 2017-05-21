@@ -13,4 +13,6 @@
 @property (strong,nonatomic) NSURL *mediaURL;
 
 + (instancetype)sharedInstanceView:(UIView *)view ;
+
+- (void)MediaStop;
 @end

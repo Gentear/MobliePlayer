@@ -7,6 +7,8 @@
 //
 
 #import "MPFloderViewController.h"
+#import "UIViewController+YYAdd.h"
+#import "MPPlayerController.h"
 
 @interface MPFloderViewController ()
 <UITableViewDataSource,UITableViewDelegate>
@@ -21,14 +23,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     if ([self respondsToSelector:@selector(automaticallyAdjustsScrollViewInsets)]) {self.automaticallyAdjustsScrollViewInsets = NO;}  //关闭自动偏移
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.16 green:0.16 blue:0.18 alpha:1];
 
+    if (_locationStr.length > 0) {
+        [self add_navigation_back_button];
+        
+        [self setCustomNavigationTitle:[_locationStr componentsSeparatedByString:@"/"].lastObject];
+    }else{
+    }
     [self.tableView reloadData];
 }
 - (NSString *)dataFilePath{
     if (_locationStr.length == 0 || _locationStr == nil) {
-        //         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        _locationStr = NSHomeDirectory();
-        //        _locationStr = [paths firstObject];
+                 NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//        _locationStr = NSHomeDirectory();
+                _locationStr = [paths firstObject];
     }
     return _locationStr;
 }
@@ -87,7 +96,20 @@
         MPFloderViewController * vc = [[MPFloderViewController alloc]init];
         NSString * str = [[self dataFilePath]stringByAppendingPathComponent:self.dataArray[indexPath.row]];
         vc.locationStr = str;
+        vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
+    }else{
+        NSString * str = [[self dataFilePath]stringByAppendingPathComponent:self.dataArray[indexPath.row]];
+        NSString *string = @"//.rmvb//.asf//.avi//.divx//.dv//.flv//.gxf//.m1v//.m2v//.m2ts//.m4v//.mkv//.mov//.mp2//.mp4//.mpeg//.mpeg1//.mpeg2//.mpeg4//.mpg//.mts//.mxf//.ogg//.ogm//.ps//.ts//.vob//.wmv//.a52//.aac//.ac3//.dts//.flac//.m4a//.m4p//.mka//.mod//.mp1//.mp2//.mp3//.ogg";
+        NSArray * arr = [string componentsSeparatedByString:@"//"];
+        [arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([str containsString:obj]) {
+                MPPlayerController * player = [[MPPlayerController alloc]init];
+                player.videoPath = str;
+                player.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:player animated:YES];
+            }
+        }];
     }
     
 }

@@ -79,12 +79,16 @@
         self.videoTimeLabel.hidden = YES;
         self.closeBtn.hidden = YES;
         self.bottomProgress.hidden = NO;
-        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+        if (self.frame.size.height == ScreenHeight) {
+            [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+        }
     }];
 }
 - (void)showAnimation{
     _isHiddenControl = YES;
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    if (self.frame.size.height == ScreenHeight) {
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    }
     self.bottomImage.hidden = NO;
     self.topImage.hidden = NO;
     self.playBtn.hidden = NO;

@@ -1,29 +1,45 @@
 PODS:
-  - CocoaAsyncSocket (7.6.0)
-  - CocoaHTTPServer (2.3):
-    - CocoaAsyncSocket
-    - CocoaLumberjack
-  - CocoaLumberjack (3.1.0):
-    - CocoaLumberjack/Default (= 3.1.0)
-    - CocoaLumberjack/Extensions (= 3.1.0)
-  - CocoaLumberjack/Default (3.1.0)
-  - CocoaLumberjack/Extensions (3.1.0):
+  - CocoaLumberjack (2.3.0):
+    - CocoaLumberjack/Default (= 2.3.0)
+    - CocoaLumberjack/Extensions (= 2.3.0)
+  - CocoaLumberjack/Core (2.3.0)
+  - CocoaLumberjack/Default (2.3.0):
+    - CocoaLumberjack/Core
+  - CocoaLumberjack/Extensions (2.3.0):
     - CocoaLumberjack/Default
+  - GCDWebServer/CocoaLumberjack (3.3.3):
+    - CocoaLumberjack (~> 2)
+    - GCDWebServer/Core
+  - GCDWebServer/Core (3.3.3)
+  - GCDWebServer/WebUploader (3.3.3):
+    - GCDWebServer/WebUploader/CocoaLumberjack (= 3.3.3)
+    - GCDWebServer/WebUploader/Core (= 3.3.3)
+  - GCDWebServer/WebUploader/CocoaLumberjack (3.3.3):
+    - GCDWebServer/CocoaLumberjack
+    - GCDWebServer/WebUploader/Core
+  - GCDWebServer/WebUploader/Core (3.3.3):
+    - GCDWebServer/Core
   - Masonry (1.0.2)
   - MobileVLCKit (2.2.2)
+  - RTRootNavigationController (0.5.25)
+  - SVProgressHUD (2.1.2)
 
 DEPENDENCIES:
-  - CocoaHTTPServer
+  - CocoaLumberjack (~> 2.3.0)
+  - GCDWebServer/WebUploader
   - Masonry
   - MobileVLCKit
+  - RTRootNavigationController
+  - SVProgressHUD
 
 SPEC CHECKSUMS:
-  CocoaAsyncSocket: b9d5589f07baf9de8f34cc25abd4fcba28f13805
-  CocoaHTTPServer: 5624681fc3473d43b18202f635f9b3abb013b530
-  CocoaLumberjack: 8311463ddf9ee86a06ef92a071dd656c89244500
+  CocoaLumberjack: 97fab7ee5f507fe54445cca7ea80f926729cfd15
+  GCDWebServer: 1c39a1f0763e4eb492bee021e4270fce097d3555
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MobileVLCKit: 75c2c36b0e3478c3f18cac3a2e7fa127cda0ff92
+  RTRootNavigationController: dfc25b4055e234ddc7c1504240e7201d9e8027bd
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
-PODFILE CHECKSUM: 8ab9c8585ccac954a4f666a5f2e6fe6253e00638
+PODFILE CHECKSUM: e27010d57ec62728e9c7c5d47a44c7aa99810d09
 
 COCOAPODS: 1.1.1

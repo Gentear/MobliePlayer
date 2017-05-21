@@ -48,14 +48,12 @@
         instance = [[MPPlayerManager alloc] init];
         [view addSubview:instance];
     });
+    instance.hidden = NO;
+    [instance willMoveToSuperview:view];
     return instance;
 }
 - (void)didMoveToSuperview{
-    [self mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo([UIApplication sharedApplication].keyWindow);
-        make.height.equalTo(@(ScreenWidth/ScreenHeight * ScreenWidth));
-        make.center.equalTo([UIApplication sharedApplication].keyWindow);
-    }];
+   
 }
 - (void)willMoveToSuperview:(UIView *)newSuperview{
     self.backgroundColor = [UIColor blackColor];
@@ -74,8 +72,8 @@
                          self.player.drawable =self;
     }];
     [self bringSubviewToFront:self.controlView];
-    [self birghtness];
     [self configureVolume];
+    [self birghtness];
 }
 #pragma mark - view init
 - (void)addNotification{
@@ -95,6 +93,7 @@
 #pragma mark - 通知
 //屏幕旋转的通知
 - (void)onDeviceOrientationChange{
+    
     UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
     UIInterfaceOrientation interfaceOrientation = (UIInterfaceOrientation)orientation;
     if (interfaceOrientation == UIDeviceOrientationFaceUp || interfaceOrientation == UIDeviceOrientationFaceDown || interfaceOrientation == UIDeviceOrientationUnknown ||interfaceOrientation == UIDeviceOrientationPortraitUpsideDown) { return; }
@@ -135,19 +134,24 @@
     // 根据要旋转的方向,使用Masonry重新修改限制
     if (orientation != UIInterfaceOrientationPortrait) {//
         // 这个地方加判断是为了从全屏的一侧,直接到全屏的另一侧不用修改限制,否则会出错;
+        self.controlView.fullScreenBtn.selected = YES;
         if (currentOrientation == UIInterfaceOrientationPortrait) {
             [self mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.width.equalTo(@(ScreenHeight));
                 make.height.equalTo(@(ScreenWidth));
                 make.center.equalTo([UIApplication sharedApplication].keyWindow);
             }];
+            [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
         }
     }else{
+        self.controlView.fullScreenBtn.selected = NO;
         [self mas_remakeConstraints:^(MASConstraintMaker *make) {
                     make.width.equalTo([UIApplication sharedApplication].keyWindow);
                     make.height.equalTo(@(ScreenHeight/ScreenWidth * ScreenHeight));
             make.center.equalTo([UIApplication sharedApplication].keyWindow);
-            }];
+        }];
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+
     }
     // iOS6.0之后,设置状态条的方法能使用的前提是shouldAutorotate为NO,也就是说这个视图控制器内,旋转要关掉;
     // 也就是说在实现这个方法的时候-(BOOL)shouldAutorotate返回值要为NO
@@ -270,7 +274,6 @@
 - (void)DelegateFullScreenBtn:(UIButton *)fullScreen{
     fullScreen.selected = !fullScreen.selected;
     
-    
     if (fullScreen.selected) {
         UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
         if (orientation == UIDeviceOrientationLandscapeRight) {
@@ -280,6 +283,7 @@
         }
     }else{
         [self TransformView:UIInterfaceOrientationPortrait];
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     }
 }
 /** 关闭视频 */
@@ -397,7 +401,7 @@
 - (MPBirghtness *)birghtness{
     if (!_birghtness) {
         _birghtness = [MPBirghtness sharedBrightnessView];
-       
+        [[UIApplication sharedApplication].keyWindow bringSubviewToFront:_birghtness];
         [_birghtness mas_updateConstraints:^(MASConstraintMaker *make) {
             make.width.equalTo(@(155));
             make.height.equalTo(@(155));
