@@ -29,7 +29,6 @@
         [self add_navigation_back_button];
         
         [self setCustomNavigationTitle:[_locationStr componentsSeparatedByString:@"/"].lastObject];
-    }else{
     }
     [self.tableView reloadData];
 }

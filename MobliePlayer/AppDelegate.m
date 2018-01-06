@@ -9,7 +9,7 @@
 
 #import "AppDelegate.h"
 #import "MPTabBarViewController.h"
-
+#import "ViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -22,7 +22,9 @@
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+
     MPTabBarViewController *tabbar = [[MPTabBarViewController alloc]init];
+//    ViewController *tabbar =[[ViewController alloc] init];
     self.window.rootViewController = tabbar;
     [self.window makeKeyWindow];
     return YES;

@@ -9,6 +9,7 @@
 #import "MPBirghtness.h"
 #import "MPPlayer.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import <dispatch/dispatch.h>
 
 @interface MPBirghtness ()
 

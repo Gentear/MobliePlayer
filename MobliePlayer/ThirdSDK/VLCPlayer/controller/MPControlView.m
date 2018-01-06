@@ -86,9 +86,9 @@
 }
 - (void)showAnimation{
     _isHiddenControl = YES;
-    if (self.frame.size.height == ScreenHeight) {
+//    if (self.frame.size.height == ScreenHeight) {
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
-    }
+//    }
     self.bottomImage.hidden = NO;
     self.topImage.hidden = NO;
     self.playBtn.hidden = NO;

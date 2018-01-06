@@ -6,11 +6,21 @@
 //  Copyright © 2017年 conglei. All rights reserved.
 //
 
+#import <Masonry/MASConstraintMaker.h>
+#import <Masonry/View+MASAdditions.h>
 #import "ViewController.h"
 #import "MPPlayerManager.h"
-#import "UITabBarController+ZFPlayerRotation.h"
-#import "UIViewController+ZFPlayerRotation.h"
-#import "UINavigationController+ZFPlayerRotation.h"
+#import "UINavigationController+ScreenRotation.h"
+
+#define ScreenWidth [UIScreen mainScreen].bounds.size.width
+#define ScreenHeight [UIScreen mainScreen].bounds.size.height
+#define ScreenBounds [UIScreen mainScreen].bounds
+#define BarHeight 20
+#define NVHeight 44
+#define TBHeight 44
+
+#define BackgroundColor [UIColor colorWithRed:226.0/255.0 green:226.0/255.0 blue:226.0/255.0 alpha:1]
+
 @interface ViewController ()
 /** <#name#> */
 @property (strong,nonatomic) MPPlayerManager *manager;
@@ -23,6 +33,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     if ([self respondsToSelector:@selector(automaticallyAdjustsScrollViewInsets)]) {self.automaticallyAdjustsScrollViewInsets = NO;}  //关闭自动偏移
+    self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.16 green:0.16 blue:0.18 alpha:1];
 
     UIButton * btn = [UIButton buttonWithType:UIButtonTypeContactAdd];
@@ -32,9 +43,15 @@
 }
 - (void)addButtonClick:(UIButton *)sender{
     MPPlayerManager *manager = [MPPlayerManager sharedInstanceView:[UIApplication sharedApplication].keyWindow];
-    //        NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"123" ofType:@"mp4"];
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"456" ofType:@"flv"];
     manager.mediaURL = [NSURL fileURLWithPath:imagePath];
+    [manager mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo([UIApplication sharedApplication].keyWindow);
+        make.height.equalTo(@(ScreenWidth / ScreenHeight * ScreenWidth));
+        make.center.equalTo([UIApplication sharedApplication].keyWindow);
+    }];
+    //        NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"123" ofType:@"mp4"];
+
     //        manager.mediaURL = [NSURL  URLWithString:@"rtmp://live.hkstv.hk.lxdns.com/live/hks"];
     //    manager.mediaURL = [NSURL  URLWithString:@"http://gslb.miaopai.com/stream/mHtThGn2H1rQ54LY~uk5hw__.mp4?yx=&refer=weibo_app&Expires=1491533552&ssig=c%2FjqaqlRfd&KID=unistore,video"];
     

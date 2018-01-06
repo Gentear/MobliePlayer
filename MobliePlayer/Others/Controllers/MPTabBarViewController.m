@@ -43,37 +43,26 @@
 //    return self;
 //}
 
-- (void)addChildViewController:(UIViewController *)childController title:(NSString *)title normalImage:(NSString *)normalImage selectImage:(NSString *)selectImage{
-    childController.tabBarItem.title = title;
-    childController.tabBarItem.image = [UIImage imageNamed:normalImage];
-    childController.tabBarItem.selectedImage = [[UIImage imageNamed:selectImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-//    [childController.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName : YJBLUECOLOR} forState:UIControlStateSelected];
-    
-    RTRootNavigationController *nav = [[RTRootNavigationController alloc] initWithRootViewController:childController];
-    [nav.navigationBar setBackgroundImage:[[UIImage alloc]init] forBarMetrics:UIBarMetricsDefault];
-    
-    [self addChildViewController:nav];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     MPFloderViewController *customizeVC = [[MPFloderViewController alloc] init];
-    [self addChildViewController:customizeVC title:@"专题" normalImage:@"TabBar-Topic-normal" selectImage:@"TabBar-Topic-select"];
+    [self addChildViewController:customizeVC title:@"Finder" normalImage:@"TabBar-Topic-normal" selectImage:@"TabBar-Topic-select"];
     MPHTTPViewController *myVC = [[MPHTTPViewController alloc] init];
-    [self addChildViewController:myVC title:@"我的" normalImage:@"TabBar-My-normal" selectImage:@"TabBar-My-select"];
-    
-//    UIImage *bgImg = [[UIImage alloc] init];
-//    [self.tabBar setBackgroundImage:bgImg];
-//    
-//    self.tabBar.opaque = YES;
+    [self addChildViewController:myVC title:@"WIFI" normalImage:@"TabBar-My-normal" selectImage:@"TabBar-My-select"];
+
 }
-//-(void)viewWillAppear:(BOOL)animated{
-//    [super viewWillAppear:animated];
-//}
-//-(void)viewDidAppear:(BOOL)animated{
-//    [super viewDidAppear:animated];
-////    [self changTabBarBackground:[UIColor colorWithHexString:@"#1a1a1ad0"]];
-//}
+
+- (void)addChildViewController:(UIViewController *)childController title:(NSString *)title normalImage:(NSString *)normalImage selectImage:(NSString *)selectImage{
+
+    childController.tabBarItem.title = title;
+    childController.tabBarItem.image = [UIImage imageNamed:normalImage];
+    childController.tabBarItem.selectedImage = [[UIImage imageNamed:selectImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+
+    RTRootNavigationController *nav = [[RTRootNavigationController alloc] initWithRootViewController:childController];
+    [nav.navigationBar setBackgroundImage:[[UIImage alloc]init] forBarMetrics:UIBarMetricsDefault];
+
+    [self addChildViewController:nav];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

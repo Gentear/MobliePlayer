@@ -7,6 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		394A90AF57EA30D0823F913F /* TabBar-Topic-normal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 394A9C3543F0ADB59ECBA898 /* TabBar-Topic-normal@3x.png */; };
+		394A9216B15D650A3529572C /* UINavigationController+ScreenRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 394A93976263880402562F81 /* UINavigationController+ScreenRotation.m */; };
+		394A928791839DA69FA5B078 /* TabBar-My-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 394A938FF0B86D15899B31B2 /* TabBar-My-select@2x.png */; };
+		394A931E5AB917A92F62ED0B /* TabBar-Topic-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 394A92759D7F27FDA1091787 /* TabBar-Topic-select@2x.png */; };
+		394A950A08ACD11A1883E0B9 /* TabBar-Featured-normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 394A902C42973BC2A55CCA4B /* TabBar-Featured-normal@2x.png */; };
+		394A96A7A635091FB3C23B5D /* TabBar-Featured-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 394A9FD1753CA725A6AC7DEE /* TabBar-Featured-select@2x.png */; };
+		394A9716D282EA83302A8274 /* TabBar-Featured-normal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 394A9549BB966FA7E5D58C92 /* TabBar-Featured-normal@3x.png */; };
+		394A97434DD9632829989A14 /* TabBar-My-normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 394A925F1952A7941A535913 /* TabBar-My-normal@2x.png */; };
+		394A9749497BC2C64B114DE0 /* UIViewController+ScreenRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 394A9CD9A098D6A6E001DF66 /* UIViewController+ScreenRotation.m */; };
+		394A97B55E148DA204280D85 /* TabBar-Featured-select@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 394A9F987E054AA61544B9B5 /* TabBar-Featured-select@3x.png */; };
+		394A98E45DF1FADCE3AE0850 /* TabBar-Topic-select@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 394A9F56478EC0DECEC84C93 /* TabBar-Topic-select@3x.png */; };
+		394A9A7050DD376DFDA6C811 /* UIView+ScreenRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 394A9F8FAD736560B183BBA6 /* UIView+ScreenRotation.m */; };
+		394A9B369BB940A9B01CA414 /* TabBar-My-select@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 394A9549FDD9F2ADBF7F6CD8 /* TabBar-My-select@3x.png */; };
+		394A9BDD0E8D32DB4C049741 /* TabBar-Topic-normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 394A9EA08976BFF22522A6D1 /* TabBar-Topic-normal@2x.png */; };
+		394A9DBAE0FDD654B003F6A9 /* TabBar-My-normal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 394A948A713E7B0A1676B081 /* TabBar-My-normal@3x.png */; };
+		394A9FD81BDA6518C27EB885 /* UITabBarController+ScreenRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 394A93D31412913CF0BB9E66 /* UITabBarController+ScreenRotation.m */; };
 		528B3BD01BA13FB12BBF524E /* Pods_MobliePlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCF664A3A4C24F8097489F0 /* Pods_MobliePlayer.framework */; };
 		F3067D4F1E94CB390017CA13 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F3067D4E1E94CB390017CA13 /* main.m */; };
 		F3067D521E94CB390017CA13 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F3067D511E94CB390017CA13 /* AppDelegate.m */; };
@@ -18,12 +34,8 @@
 		F3067D691E94CF4B0017CA13 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F3067D681E94CF4B0017CA13 /* libbz2.tbd */; };
 		F3067D6B1E94CF540017CA13 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F3067D6A1E94CF540017CA13 /* libiconv.tbd */; };
 		F3067D6D1E94CF5D0017CA13 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F3067D6C1E94CF5D0017CA13 /* libstdc++.6.0.9.tbd */; };
-		F308CD3C1ECE98270086C5A6 /* UIAlertController+ZFPlayerRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F308CD1F1ECE98270086C5A6 /* UIAlertController+ZFPlayerRotation.m */; };
 		F308CD3D1ECE98270086C5A6 /* UIButton+MPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F308CD211ECE98270086C5A6 /* UIButton+MPButton.m */; };
-		F308CD3E1ECE98270086C5A6 /* UINavigationController+ZFPlayerRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F308CD231ECE98270086C5A6 /* UINavigationController+ZFPlayerRotation.m */; };
-		F308CD3F1ECE98270086C5A6 /* UITabBarController+ZFPlayerRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F308CD251ECE98270086C5A6 /* UITabBarController+ZFPlayerRotation.m */; };
 		F308CD401ECE98270086C5A6 /* UIView+CLView.m in Sources */ = {isa = PBXBuildFile; fileRef = F308CD271ECE98270086C5A6 /* UIView+CLView.m */; };
-		F308CD411ECE98270086C5A6 /* UIViewController+ZFPlayerRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F308CD291ECE98270086C5A6 /* UIViewController+ZFPlayerRotation.m */; };
 		F308CD421ECE98270086C5A6 /* MPBirghtness.m in Sources */ = {isa = PBXBuildFile; fileRef = F308CD2C1ECE98270086C5A6 /* MPBirghtness.m */; };
 		F308CD431ECE98270086C5A6 /* MPControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = F308CD2E1ECE98270086C5A6 /* MPControlView.m */; };
 		F308CD441ECE98270086C5A6 /* MPFastView.m in Sources */ = {isa = PBXBuildFile; fileRef = F308CD301ECE98270086C5A6 /* MPFastView.m */; };
@@ -94,6 +106,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		394A902C42973BC2A55CCA4B /* TabBar-Featured-normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-Featured-normal@2x.png"; sourceTree = "<group>"; };
+		394A91B8798D4EC7C61A91C3 /* UIView+ScreenRotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ScreenRotation.h"; sourceTree = "<group>"; };
+		394A925F1952A7941A535913 /* TabBar-My-normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-My-normal@2x.png"; sourceTree = "<group>"; };
+		394A92759D7F27FDA1091787 /* TabBar-Topic-select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-Topic-select@2x.png"; sourceTree = "<group>"; };
+		394A938FF0B86D15899B31B2 /* TabBar-My-select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-My-select@2x.png"; sourceTree = "<group>"; };
+		394A93976263880402562F81 /* UINavigationController+ScreenRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+ScreenRotation.m"; sourceTree = "<group>"; };
+		394A93D31412913CF0BB9E66 /* UITabBarController+ScreenRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+ScreenRotation.m"; sourceTree = "<group>"; };
+		394A948A713E7B0A1676B081 /* TabBar-My-normal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-My-normal@3x.png"; sourceTree = "<group>"; };
+		394A9549BB966FA7E5D58C92 /* TabBar-Featured-normal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-Featured-normal@3x.png"; sourceTree = "<group>"; };
+		394A9549FDD9F2ADBF7F6CD8 /* TabBar-My-select@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-My-select@3x.png"; sourceTree = "<group>"; };
+		394A97DE3C66FF42F9992553 /* UIViewController+ScreenRotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ScreenRotation.h"; sourceTree = "<group>"; };
+		394A988B01F022F89C389033 /* UINavigationController+ScreenRotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+ScreenRotation.h"; sourceTree = "<group>"; };
+		394A98EA683AC788FD70D99A /* CLScreenRotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLScreenRotation.h; sourceTree = "<group>"; };
+		394A9C3543F0ADB59ECBA898 /* TabBar-Topic-normal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-Topic-normal@3x.png"; sourceTree = "<group>"; };
+		394A9CD9A098D6A6E001DF66 /* UIViewController+ScreenRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ScreenRotation.m"; sourceTree = "<group>"; };
+		394A9D3A5B03426013B5008F /* UITabBarController+ScreenRotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+ScreenRotation.h"; sourceTree = "<group>"; };
+		394A9EA08976BFF22522A6D1 /* TabBar-Topic-normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-Topic-normal@2x.png"; sourceTree = "<group>"; };
+		394A9F56478EC0DECEC84C93 /* TabBar-Topic-select@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-Topic-select@3x.png"; sourceTree = "<group>"; };
+		394A9F8FAD736560B183BBA6 /* UIView+ScreenRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ScreenRotation.m"; sourceTree = "<group>"; };
+		394A9F987E054AA61544B9B5 /* TabBar-Featured-select@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-Featured-select@3x.png"; sourceTree = "<group>"; };
+		394A9FD1753CA725A6AC7DEE /* TabBar-Featured-select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar-Featured-select@2x.png"; sourceTree = "<group>"; };
 		5FCF664A3A4C24F8097489F0 /* Pods_MobliePlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobliePlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B83535BAC1EC0F7807D5978 /* Pods-MobliePlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobliePlayer.release.xcconfig"; path = "Pods/Target Support Files/Pods-MobliePlayer/Pods-MobliePlayer.release.xcconfig"; sourceTree = "<group>"; };
 		AFA625441982A5489E1DCAAB /* Pods-MobliePlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobliePlayer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MobliePlayer/Pods-MobliePlayer.debug.xcconfig"; sourceTree = "<group>"; };
@@ -110,18 +143,10 @@
 		F3067D681E94CF4B0017CA13 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		F3067D6A1E94CF540017CA13 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		F3067D6C1E94CF5D0017CA13 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
-		F308CD1E1ECE98270086C5A6 /* UIAlertController+ZFPlayerRotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+ZFPlayerRotation.h"; sourceTree = "<group>"; };
-		F308CD1F1ECE98270086C5A6 /* UIAlertController+ZFPlayerRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+ZFPlayerRotation.m"; sourceTree = "<group>"; };
 		F308CD201ECE98270086C5A6 /* UIButton+MPButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+MPButton.h"; sourceTree = "<group>"; };
 		F308CD211ECE98270086C5A6 /* UIButton+MPButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+MPButton.m"; sourceTree = "<group>"; };
-		F308CD221ECE98270086C5A6 /* UINavigationController+ZFPlayerRotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+ZFPlayerRotation.h"; sourceTree = "<group>"; };
-		F308CD231ECE98270086C5A6 /* UINavigationController+ZFPlayerRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+ZFPlayerRotation.m"; sourceTree = "<group>"; };
-		F308CD241ECE98270086C5A6 /* UITabBarController+ZFPlayerRotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+ZFPlayerRotation.h"; sourceTree = "<group>"; };
-		F308CD251ECE98270086C5A6 /* UITabBarController+ZFPlayerRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+ZFPlayerRotation.m"; sourceTree = "<group>"; };
 		F308CD261ECE98270086C5A6 /* UIView+CLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CLView.h"; sourceTree = "<group>"; };
 		F308CD271ECE98270086C5A6 /* UIView+CLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CLView.m"; sourceTree = "<group>"; };
-		F308CD281ECE98270086C5A6 /* UIViewController+ZFPlayerRotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ZFPlayerRotation.h"; sourceTree = "<group>"; };
-		F308CD291ECE98270086C5A6 /* UIViewController+ZFPlayerRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ZFPlayerRotation.m"; sourceTree = "<group>"; };
 		F308CD2B1ECE98270086C5A6 /* MPBirghtness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPBirghtness.h; sourceTree = "<group>"; };
 		F308CD2C1ECE98270086C5A6 /* MPBirghtness.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPBirghtness.m; sourceTree = "<group>"; };
 		F308CD2D1ECE98270086C5A6 /* MPControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPControlView.h; sourceTree = "<group>"; };
@@ -308,18 +333,19 @@
 		F308CD1D1ECE98270086C5A6 /* category */ = {
 			isa = PBXGroup;
 			children = (
-				F308CD1E1ECE98270086C5A6 /* UIAlertController+ZFPlayerRotation.h */,
-				F308CD1F1ECE98270086C5A6 /* UIAlertController+ZFPlayerRotation.m */,
 				F308CD201ECE98270086C5A6 /* UIButton+MPButton.h */,
 				F308CD211ECE98270086C5A6 /* UIButton+MPButton.m */,
-				F308CD221ECE98270086C5A6 /* UINavigationController+ZFPlayerRotation.h */,
-				F308CD231ECE98270086C5A6 /* UINavigationController+ZFPlayerRotation.m */,
-				F308CD241ECE98270086C5A6 /* UITabBarController+ZFPlayerRotation.h */,
-				F308CD251ECE98270086C5A6 /* UITabBarController+ZFPlayerRotation.m */,
 				F308CD261ECE98270086C5A6 /* UIView+CLView.h */,
 				F308CD271ECE98270086C5A6 /* UIView+CLView.m */,
-				F308CD281ECE98270086C5A6 /* UIViewController+ZFPlayerRotation.h */,
-				F308CD291ECE98270086C5A6 /* UIViewController+ZFPlayerRotation.m */,
+				394A9F8FAD736560B183BBA6 /* UIView+ScreenRotation.m */,
+				394A98EA683AC788FD70D99A /* CLScreenRotation.h */,
+				394A93D31412913CF0BB9E66 /* UITabBarController+ScreenRotation.m */,
+				394A97DE3C66FF42F9992553 /* UIViewController+ScreenRotation.h */,
+				394A9D3A5B03426013B5008F /* UITabBarController+ScreenRotation.h */,
+				394A9CD9A098D6A6E001DF66 /* UIViewController+ScreenRotation.m */,
+				394A93976263880402562F81 /* UINavigationController+ScreenRotation.m */,
+				394A91B8798D4EC7C61A91C3 /* UIView+ScreenRotation.h */,
+				394A988B01F022F89C389033 /* UINavigationController+ScreenRotation.h */,
 			);
 			path = category;
 			sourceTree = "<group>";
@@ -578,6 +604,18 @@
 				F39AD9BD1EADF3CD00E30DBB /* unlock-nor@2x.png */,
 				F39AD9BE1EADF3CD00E30DBB /* unlock-nor@3x.png */,
 				F39AD9BF1EADF3CD00E30DBB /* volume@2x.png */,
+				394A925F1952A7941A535913 /* TabBar-My-normal@2x.png */,
+				394A9EA08976BFF22522A6D1 /* TabBar-Topic-normal@2x.png */,
+				394A92759D7F27FDA1091787 /* TabBar-Topic-select@2x.png */,
+				394A9F56478EC0DECEC84C93 /* TabBar-Topic-select@3x.png */,
+				394A948A713E7B0A1676B081 /* TabBar-My-normal@3x.png */,
+				394A902C42973BC2A55CCA4B /* TabBar-Featured-normal@2x.png */,
+				394A938FF0B86D15899B31B2 /* TabBar-My-select@2x.png */,
+				394A9549BB966FA7E5D58C92 /* TabBar-Featured-normal@3x.png */,
+				394A9549FDD9F2ADBF7F6CD8 /* TabBar-My-select@3x.png */,
+				394A9C3543F0ADB59ECBA898 /* TabBar-Topic-normal@3x.png */,
+				394A9F987E054AA61544B9B5 /* TabBar-Featured-select@3x.png */,
+				394A9FD1753CA725A6AC7DEE /* TabBar-Featured-select@2x.png */,
 			);
 			path = imageSource;
 			sourceTree = "<group>";
@@ -701,6 +739,18 @@
 				F39AD9C91EADF3CD00E30DBB /* download@3x.png in Resources */,
 				F3067D581E94CB390017CA13 /* Main.storyboard in Resources */,
 				F39AD9D31EADF3CD00E30DBB /* lock-nor@2x.png in Resources */,
+				394A97434DD9632829989A14 /* TabBar-My-normal@2x.png in Resources */,
+				394A9BDD0E8D32DB4C049741 /* TabBar-Topic-normal@2x.png in Resources */,
+				394A931E5AB917A92F62ED0B /* TabBar-Topic-select@2x.png in Resources */,
+				394A98E45DF1FADCE3AE0850 /* TabBar-Topic-select@3x.png in Resources */,
+				394A9DBAE0FDD654B003F6A9 /* TabBar-My-normal@3x.png in Resources */,
+				394A950A08ACD11A1883E0B9 /* TabBar-Featured-normal@2x.png in Resources */,
+				394A928791839DA69FA5B078 /* TabBar-My-select@2x.png in Resources */,
+				394A9716D282EA83302A8274 /* TabBar-Featured-normal@3x.png in Resources */,
+				394A9B369BB940A9B01CA414 /* TabBar-My-select@3x.png in Resources */,
+				394A90AF57EA30D0823F913F /* TabBar-Topic-normal@3x.png in Resources */,
+				394A97B55E148DA204280D85 /* TabBar-Featured-select@3x.png in Resources */,
+				394A96A7A635091FB3C23B5D /* TabBar-Featured-select@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -763,7 +813,6 @@
 				F39AD9901EADF36200E30DBB /* ViewController.m in Sources */,
 				F308CD441ECE98270086C5A6 /* MPFastView.m in Sources */,
 				F308CD431ECE98270086C5A6 /* MPControlView.m in Sources */,
-				F308CD3C1ECE98270086C5A6 /* UIAlertController+ZFPlayerRotation.m in Sources */,
 				F3067D521E94CB390017CA13 /* AppDelegate.m in Sources */,
 				F308CD421ECE98270086C5A6 /* MPBirghtness.m in Sources */,
 				F308CD461ECE98270086C5A6 /* MPPanGestureRecognizer.m in Sources */,
@@ -773,15 +822,16 @@
 				F308CD451ECE98270086C5A6 /* MPHUDView.m in Sources */,
 				F3067D4F1E94CB390017CA13 /* main.m in Sources */,
 				F308CD751ECE9F160086C5A6 /* UIViewController+YYAdd.m in Sources */,
-				F308CD3F1ECE98270086C5A6 /* UITabBarController+ZFPlayerRotation.m in Sources */,
-				F308CD411ECE98270086C5A6 /* UIViewController+ZFPlayerRotation.m in Sources */,
 				F308CD481ECE98270086C5A6 /* MPSlider.m in Sources */,
 				F30ACB951ED024CC001427BE /* MPPlayerController.m in Sources */,
 				F308CD3D1ECE98270086C5A6 /* UIButton+MPButton.m in Sources */,
 				F308CD561ECE98E00086C5A6 /* MPHTTPViewController.m in Sources */,
 				F30ACB8E1ED005ED001427BE /* UIColor+CLColor.m in Sources */,
-				F308CD3E1ECE98270086C5A6 /* UINavigationController+ZFPlayerRotation.m in Sources */,
 				F308CD401ECE98270086C5A6 /* UIView+CLView.m in Sources */,
+				394A9A7050DD376DFDA6C811 /* UIView+ScreenRotation.m in Sources */,
+				394A9FD81BDA6518C27EB885 /* UITabBarController+ScreenRotation.m in Sources */,
+				394A9749497BC2C64B114DE0 /* UIViewController+ScreenRotation.m in Sources */,
+				394A9216B15D650A3529572C /* UINavigationController+ScreenRotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

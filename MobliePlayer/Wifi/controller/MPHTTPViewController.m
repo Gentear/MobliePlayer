@@ -44,6 +44,7 @@
     self.backImage.backgroundColor = [UIColor colorWithRed:0.96 green:0.96 blue:0.97 alpha:1.00];
     if ([self.webServer start]) {
     NSLog(@"%@",[NSString stringWithFormat:NSLocalizedString(@"GCDWebServer running locally on port %i", nil), (int)_webServer.port]);
+
         self.wifiImage.image = [UIImage imageNamed:@"icon_wifi"];
         self.wifiLabel.text = @"WIFI服务已开启";
         self.wifiDescription.text = @"上传过程中请勿离开此页面或锁屏";
